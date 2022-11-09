@@ -1,10 +1,10 @@
 # 基本仕様
 【仕様】見積管理システム
 ・過去見積の参照機能
-・決済簡略化機能（チャット機能を持たすことで決済前処理をスムーズに対応出来る。）
+・決済簡略化機能（チャット機能を持たすことで決済処理をスムーズに対応出来る。）
 ・原価計算自動化機能
-・受注確度に自動反映機能
-・アラー表示機能 
+・受注確度ソート表示機能
+・アラート表示機能 
 
 ## テーブル設計
 ##Usersテーブル
@@ -38,6 +38,16 @@
 - belongs_to_active_hash :category_id
 - belongs_to_active_hash :status_id
 
+
+##Itemテーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+|   item             | string     | null: false                    |
+|   cost_price       | string     | null: false                    |
+|   purchase_price   | string     | null: false                    |
+|   user             | references | null: false, foreign_key: true |
+
+
 ##chatテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -47,5 +57,3 @@
 - belongs_to    :Estimate
 - has_one       :delivery
 - belongs_to    :user
-
-
